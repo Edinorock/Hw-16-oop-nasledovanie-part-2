@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public abstract class Animal {
     private final String name;
     private final Integer age;
@@ -17,18 +19,20 @@ public abstract class Animal {
     public Integer getAge() {
         return age;
     }
+
     public String getResidence() {
         return residence;
     }
 
-    public void setResidence (String residence) {
+    public void setResidence(String residence) {
         if (residence == null || residence.isBlank()) {
             this.residence = "Неизвестно";
         } else {
             this.residence = residence;
         }
     }
-    public  void sleep() {
+
+    public void sleep() {
         System.out.println(getName() + "Спит крепко и долго");
     }
 
@@ -37,9 +41,26 @@ public abstract class Animal {
     public abstract void go();
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && name.equals(animal.name) && residence.equals(animal.residence);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, residence);
+    }
+
+
+    @Override
     public String toString() {
         return "Animals{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
     }
+}

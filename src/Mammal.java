@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Mammal extends Animal {
     private Integer speed;
     private String typeOfFood;
@@ -43,6 +45,20 @@ public class Mammal extends Animal {
     @Override
     public void go() {
         System.out.println(getName() + " ходит");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Mammal mammal = (Mammal) o;
+        return typeOfFood == mammal.typeOfFood && speed.equals(mammal.speed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), speed, typeOfFood);
     }
 
     @Override
