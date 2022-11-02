@@ -1,4 +1,4 @@
-public class Predator extends Mammal{
+public class Predator extends Mammal {
     public Predator(String name, Integer age, String residence, Integer speed, String typeOfFood) {
         super(name, age, residence, speed, typeOfFood);
     }
