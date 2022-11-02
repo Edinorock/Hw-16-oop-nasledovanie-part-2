@@ -6,7 +6,7 @@ public class Herbivore extends Mammal {
 
     @Override
     public void go() {
-        System.out.println(getName() + " ходит быстро");
+        System.out.println(getName() + " передвигается быстро");
     }
     @Override
     public void eat() {
